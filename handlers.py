@@ -12,7 +12,7 @@ def forward_to_leads(update: Update, context: CallbackContext):
 
 
 def reply_to_teammate(update: Update, context: CallbackContext):
-    if update.message.forward_from:
+    if update.message.reply_to_message.forward_from:
         user_id = update.message.reply_to_message.forward_from.id
     context.bot.copy_message(
         mesage_id=update.message.message_id,
