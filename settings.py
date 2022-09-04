@@ -11,4 +11,4 @@ WELCOME_MESSAGE = os.getenv('WELCOME_MESSAGE')
 HELP_MESSAGE = os.getenv('HELP_MESSAGE')
 # Heroku settings
 PORT = int(os.environ.get('PORT', '8443'))
-APP_NAME_HEROKU = os.getenv("HEROKU_APP_NAME")
+APP_NAME_HEROKU = os.getenv("APP_NAME_HEROKU")

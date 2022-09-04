@@ -1,6 +1,6 @@
 from telegram import Update
 from telegram.ext import MessageHandler, CommandHandler, Filters, CallbackContext
-from settings import WELCOME_MESSAGE, TEAM_LEADS_CHAT_ID, BOT_USERNAME
+from settings import WELCOME_MESSAGE, TEAM_LEADS_CHAT_ID, BOT_USERNAME, HELP_MESSAGE
 
 
 def start(update: Update, context: CallbackContext):
@@ -12,7 +12,7 @@ def start(update: Update, context: CallbackContext):
 
 
 def help(update: Update, context: CallbackContext):
-    update.message.reply_text()
+    update.message.reply_text(HELP_MESSAGE)
 
 
 def forward_to_leads(update: Update, context: CallbackContext):
