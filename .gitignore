@@ -271,6 +271,7 @@ celerybeat.pid
 
 # Environments
 .env
+.env_test
 .venv
 env/
 venv/
@@ -310,4 +311,3 @@ cython_debug/
 .idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm,macos
-n

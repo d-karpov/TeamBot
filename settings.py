@@ -1,7 +1,8 @@
 import os
 from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv())
+load_dotenv(find_dotenv('.env_test')) if os.getenv('MODE') else load_dotenv(find_dotenv())
+
 # Telegram settings
 TOKEN = os.getenv('TOKEN')
 TEAM_LEADS_CHAT_ID = int(os.getenv('TEAM_LEADS_CHAT_ID'))
