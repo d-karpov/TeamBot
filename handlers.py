@@ -31,10 +31,11 @@ def reply_to_teammate(update: Update, context: CallbackContext):
 
 def setup_dispatcher(dispatcher):
     dispatcher.add_handler(CommandHandler('start', start))
-    dispatcher.add_handler(CommandHandler(['help', 'h'], help))
+    dispatcher.add_handler(CommandHandler('help', help))
 
     dispatcher.add_handler(
-        MessageHandler(Filters.chat_type.private & (~Filters.user(username=BOT_USERNAME)), forward_to_leads)
+        MessageHandler(Filters.chat_type.private & (~Filters.user(username=BOT_USERNAME) & (~Filters.command)),
+                       forward_to_leads)
     )
     dispatcher.add_handler(
         MessageHandler(Filters.reply & Filters.chat(TEAM_LEADS_CHAT_ID), reply_to_teammate)
