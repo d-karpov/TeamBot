@@ -1,4 +1,4 @@
-from telegram import Bot, BotCommandScopeAllGroupChats
+from telegram import Bot
 from settings import TOKEN
 
 bot = Bot(TOKEN)

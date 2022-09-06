@@ -16,12 +16,25 @@ def help(update: Update, context: CallbackContext):
 
 
 def forward_to_leads(update: Update, context: CallbackContext):
-    update.message.forward(chat_id=TEAM_LEADS_CHAT_ID)
+    forwarded = update.message.forward(chat_id=TEAM_LEADS_CHAT_ID)
+    if not forwarded.forward_from:
+        context.bot.send_message(
+            chat_id=TEAM_LEADS_CHAT_ID,
+            reply_to_message_id=forwarded.message_id,
+            text=f'{update.message.from_user.id}\nREPLY TO THIS MESSAGE'
+        )
 
 
 def reply_to_teammate(update: Update, context: CallbackContext):
+    user_id = None
     if update.message.reply_to_message.forward_from:
         user_id = update.message.reply_to_message.forward_from.id
+    elif 'REPLY TO THIS MESSAGE' in update.message.reply_to_message.text:
+        try:
+            user_id = int(update.message.reply_to_message.text.split('\n')[0])
+        except ValueError:
+            user_id = None
+    if user_id:
         context.bot.copy_message(
             message_id=update.message.message_id,
             chat_id=user_id,
