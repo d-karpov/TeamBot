@@ -9,5 +9,5 @@ def bot_setup():
         [
             ['start', 'Starts bot, pins small instruction'],
             ['help', 'About']
-        ],
+        ]
     )

@@ -12,7 +12,10 @@ def start(update: Update, context: CallbackContext):
 
 
 def help(update: Update, context: CallbackContext):
-    update.message.reply_text(HELP_MESSAGE)
+    if update.effective_chat.type == 'supergroup':
+        update.message.reply_text(f'{HELP_MESSAGE}\n{update.effective_chat.to_json()}')
+    else:
+        update.message.reply_text(HELP_MESSAGE)
 
 
 def forward_to_leads(update: Update, context: CallbackContext):
